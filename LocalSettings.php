@@ -168,5 +168,5 @@ $wgDefaultUserOptions['visualeditor-newwikitext'] = 1;
 # MobileFrontend
 wfLoadExtension( 'MobileFrontend' );
 $wgMFAutodetectMobileView = true;
-$wgMFDefaultSkinClass = 'SkinMinerva';
-wfLoadSkin( 'MinervaNeue' );
+$wgDefaultMobileSkin = 'citizen';
+wfLoadSkin( 'Citizen' );
