@@ -11,7 +11,6 @@ services:
       # the mediawiki service
       # - ./LocalSettings.php:/var/www/html/LocalSettings.php
       - ./images:/var/www/html/images
-      - ./mediawiki_secrets.php:/external_includes/mediawiki_secrets.php
   database:
     image: yobasystems/alpine-mariadb:latest
     command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
@@ -28,7 +27,7 @@ services:
       MYSQL_USER: wikiuser
       MYSQL_PASSWORD: example
   parsoid:
-    image: thenets/parsoid:0.11
+    image: issafalcon/parsoid:0.11
     ports:
       - 8091:8000
     environment:

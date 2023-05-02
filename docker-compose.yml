@@ -2,6 +2,7 @@ version: '3'
 services:
   mediawiki:
     image: issafalcon/mediawiki:1.39
+    restart: always
     ports:
       - 8090:80
     volumes:
@@ -10,21 +11,17 @@ services:
       # the mediawiki service
       # - ./LocalSettings.php:/var/www/html/LocalSettings.php
       - ./images:/var/www/html/images
-      - ./mediawiki_secrets.php:/external_includes/mediawiki_secrets.php
   database:
     image: mariadb
+    restart: always
     volumes:
       - ./db:/var/lib/mysql
     deploy:
       placement:
         constraints: [node.role == manager]
     environment:
+      # Defaults for clean install
       MYSQL_RANDOM_ROOT_PASSWORD: "yes"
-    env_file:
-      - ./mysql_secrets
-  parsoid:
-    image: thenets/parsoid:0.9.0
-    ports:
-      - 8091:8000
-    environment:
-      - PARSOID_DOMAIN_mediawiki=http://mediawiki/api.php
+      MYSQL_DATABASE: my_wiki
+      MYSQL_USER: wikiuser
+      MYSQL_PASSWORD: example

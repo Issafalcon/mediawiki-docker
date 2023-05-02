@@ -1,6 +1,11 @@
 FROM mediawiki:1.39
 
-RUN chmod a+x /var/www/html/extensions/Scribunto/includes/engines/LuaStandalone/binaries/lua*_linux_*/lua
+RUN chmod a+x /var/www/html/extensions/Scribunto/includes/engines/LuaStandalone/binaries/lua*_linux_*/lua \
+  # Allow web server user to upload files to images folder (required for mediawiki uploads to wok)
+  && chown www-data /var/www/html/images
+
+# Required for VisualEditor on 32bit machines
+RUN docker-php-ext-install bcmath
 
 # Install BetaFeatures extension
 # See https://www.mediawiki.org/wiki/Extension:BetaFeatures

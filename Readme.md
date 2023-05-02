@@ -16,34 +16,25 @@ MediaWiki docker image](https://hub.docker.com/_/mediawiki/).
 - Rebuild the image and push to your chosen docker repository
 - Reference the same image in the docker compose file
 
+### Docker Compose
+
+Two compose files are provided - one that supports `armv7` architecture, and the other that supports `amd64`
+
+My main use case is to deploy on a Raspberry Pi 4, so the armv7 support is required.
+
 ## Configuration
 
 Following the official guidance, once a clean install has been performed, copy the `LocalSettings.php` from the docker container
+
 ### Configure database usernames and password
 
-The database usernames and passwords aren't stored in this repository,
-so you'll have to create the file which contain them yourself. First
-create the file `mysql_secrets` with the following, replacing the text
-in square brackets with what ever you want:
+The docker compose file uses `environment` variables to specify connection credentials for the db. When running the GUI MediaWiki setup for the first time, it's important that the provided credentials for the DB are the same as the ones in the docker compose file. IT IS STRONGLY RECOMMENDED THAT YOU CHANGE THESE BEFORE STARTING THE INSTALL.
 
 ```
 MYSQL_DATABASE=[my_wiki]
 MYSQL_USER=[<mysql_username>]
 MYSQL_PASSWORD="[<mysql_password>]"
 ```
-
-Then create the file `mediawiki_secrets` with the following, replacing
-the text in square brackets so it matches the contents of
-`mysql_secrets`.
-
-```
-<?php
-$wgDBname = "[my_wiki]";
-$wgDBuser = "[<mysql_username>]";
-$wgDBpassword = "[<mysql_password>]";
-```
-
-The docker compose file will pick up both of these secrets files (mediawiki_secrets as a volume, mysql_secrets as an env_file).
 
 ### Extension:Scribunto
 
