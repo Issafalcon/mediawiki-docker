@@ -33,7 +33,7 @@ $wgMetaNamespace = "Fig_Wiki";
 $wgScriptPath = "";
 
 ## The protocol and server name to use in fully-qualified URLs
-$wgServer = "http://192.168.1.63:8090";
+$wgServer = "http://<server-address-here>";
 
 ## The URL path to static resources (images, scripts, etc.)
 $wgResourceBasePath = $wgScriptPath;
@@ -181,6 +181,19 @@ $wgScribuntoDefaultEngine = 'luastandalone';
 // wfLoadExtension( 'MobileFrontend' );
 // $wgMFAutodetectMobileView = true;
 // $wgDefaultMobileSkin = 'citizen';
+
+###########################################
+####  PDFEmbed            ###########
+###########################################
+wfLoadExtension( 'PDFEmbed-3.0.1' );
+// Default width for the PDF object container.
+$wgPdfEmbed['width'] = 800;
+
+// Default height for the PDF object container.
+$wgPdfEmbed['height'] = 1090;
+
+//Allow user the usage of the pdf tag
+$wgGroupPermissions['*']['embed_pdf'] = true;
 
 # Uncomment to enable debug logs
 // $wgDebugToolbar = true;

@@ -66,9 +66,16 @@ This comes pre-installed with MW 1.35 and above (so no need to add to docker fil
 - [MediaWiki-Docker VisualEditor](https://www.mediawiki.org/wiki/MediaWiki-Docker/Extension/VisualEditor) 
   - Development docker environment configuration
 
+### Extension:PDFEmbed
+
+Allows PDF files to be embedded into MediaWiki using tags
+
+- [PDFEmbed Extension](https://www.mediawiki.org/wiki/Extension:PDFEmbed) 
+
 ### Skin:Citizen
 
 This is the skin installed with the custom docker image
 
 - [Citizen Skin](https://www.mediawiki.org/wiki/Skin:Citizen) 
   - Configuration steps for the skin
+
