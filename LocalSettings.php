@@ -195,6 +195,17 @@ $wgPdfEmbed['height'] = 1090;
 //Allow user the usage of the pdf tag
 $wgGroupPermissions['*']['embed_pdf'] = true;
 
+###########################################
+####  Local Mathoid as CLI      ###########
+###########################################
+
+// Set MathML as default rendering option
+$wgDefaultUserOptions['math'] = 'mathml';
+// Please create a config.yaml in advance. Templates are in the Mathoid repository.
+$wgMathoidCli = ['/var/data/wiki/mathoid/cli.js', '-c', '/var/data/wiki/mathoid/config.yaml'];
+// Raise MediaWiki's memory limit to 1.2G for mathoid.
+$wgMaxShellMemory = 1228800;
+
 # Uncomment to enable debug logs
 // $wgDebugToolbar = true;
 // $wgDevelopmentWarnings = true;

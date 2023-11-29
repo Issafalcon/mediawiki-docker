@@ -1,7 +1,7 @@
 version: '3'
 services:
   mediawiki:
-    image: issafalcon/mediawiki:1.39
+    image: issafalcon/mediawiki:1.39.1
     restart: always
     ports:
       - 8090:80
